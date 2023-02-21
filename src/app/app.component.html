@@ -1,0 +1,5 @@
+<button (click)="loadarticle()">Load Article</button>
+<p *ngFor=" let article of (article$ | async)?.article?? []">
+  {{article.title}}
+</p>
+<router-outlet></router-outlet>
