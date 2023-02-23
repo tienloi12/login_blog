@@ -2,4 +2,8 @@
 <p *ngFor=" let article of (article$ | async)?.article?? []">
   {{article.title}}
 </p>
+<p *ngFor="let item of (item$ | async)?.item ?? []">
+  {{item.title}}
+
+</p>
 <router-outlet></router-outlet>

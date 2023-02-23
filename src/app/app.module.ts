@@ -9,8 +9,10 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { EffectsModule } from '@ngrx/effects';
 import {HttpClientModule} from '@angular/common/http'
 import { ArticleEffect } from './effects/article.effects';
+import { ItemEffect } from './effects/item.effect'
 import { StoreModule } from '@ngrx/store';
 import { articleReducer } from './reducers/article.reducers';
+import { itemReducer } from './reducers/item.reducer';
 @NgModule({
   declarations: [
     AppComponent
@@ -21,10 +23,12 @@ import { articleReducer } from './reducers/article.reducers';
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     EffectsModule.forRoot([
-      ArticleEffect
+      ArticleEffect,
+      ItemEffect
     ]),
     StoreModule.forRoot({
-      article:articleReducer
+      article:articleReducer,
+      item:itemReducer
     }),
     HttpClientModule
 
