@@ -6,4 +6,6 @@ export const environment = {
     apiKey: 'AIzaSyBy890V6AHAGbwp3IYoyHPPh7F9l3S9wBY',
     authDomain: 'fir-99f3c.firebaseapp.com',
     messagingSenderId: '712454975651',
-  },};
+  },
+  api_url: 'http://localhost:3000/',
+};

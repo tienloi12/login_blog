@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import { onAuthStateChanged } from '@firebase/auth';
 import { Auth, User, user } from '@angular/fire/auth';
 import { AuthService } from './services/auth.service';
+import { ItemService } from './services/item.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -15,11 +16,13 @@ export class AppComponent {
   title = 'login_test';
   article$: Observable<ArticleState>;
   user!: User | null;
-  constructor(private authService: AuthService, private auth: Auth, private store: Store<{ article: ArticleState }>,
 
+  constructor(private authService: AuthService, 
+    private auth: Auth,
+    private store: Store<{ article: ArticleState }>,
+    private itemService : ItemService  
   ) {
     this.article$ = this.store.select('article');
-
   }
 
   loadarticle() {
@@ -34,6 +37,14 @@ export class AppComponent {
         this.user = null;
       }
     })
+  }
+  ngOnInit(): void {
+    this.checkUser();
+    this.itemService.getAllItem().subscribe((data) => {
+    console.log(data);
+  }
+    )
+
   }
 }
  
